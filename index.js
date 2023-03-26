@@ -9,16 +9,16 @@ app.get('/', async (req, res) => {
     const result = await axios.get(
       `https://api.github.com/users/${username}/repos`
     );
-    const repos = result.data
-      .map((repo) => ({
-        name: repo.name,
-        url: repo.html_url,
-        description: repo.description,
-        stars: repo.stargazers_count
-      }))
-      .sort((a, b) => b.stars - a.stars);
+//     const repos = result.data
+//       .map((repo) => ({
+//         name: repo.name,
+//         url: repo.html_url,
+//         description: repo.description,
+//         stars: repo.stargazers_count
+//       }))
+//       .sort((a, b) => b.stars - a.stars);
 
-    res.send(repos);
+    res.send(result);
   } catch (error) {
     res.status(400).send('Error while getting list of repositories');
   }
